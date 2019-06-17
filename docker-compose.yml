@@ -1,0 +1,13 @@
+version: "3"
+services:
+  web:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./public:/usr/share/nginx/html:ro
+      - .docker/web/:/etc/nginx/conf.d/:ro
+  php:
+    image: php:7.1-fpm-alpine
+    volumes:
+      - ./public:/usr/src/public
